@@ -1,0 +1,43 @@
+<script type="text/discourse-plugin" version="0.8.20">
+api.decorateWidget("home-logo:after", helper => {
+  const titleVisible = helper.attrs.minimized;
+  if (titleVisible) {
+    $(".headerLink:not(.keep)").fadeOut("fast");
+  } else {
+    $(".headerLink").fadeIn("fast");
+  }
+});
+
+var chl = settings.Custom_header_links;
+
+chl.split("|").map(i => {
+  var seg = $.map(i.split(","), $.trim),
+    trgt = seg[4],
+    keep = seg[5];
+
+  if (trgt == "self") {
+    seg[4] = "";
+  } else {
+    seg[4] = "_blank";
+  }
+
+  if (keep != "keep") {
+    seg[5] = "";
+  }
+
+  api.decorateWidget("header-buttons:before", helper => {
+    return helper.h(
+      "li.headerLink." + seg[3] + "." + seg[5],
+      helper.h(
+        "a",
+        {
+          href: seg[2],
+          title: seg[1],
+          target: seg[4]
+        },
+        seg[0]
+      )
+    );
+  });
+});
+</script>
