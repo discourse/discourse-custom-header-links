@@ -1,10 +1,11 @@
 <script type="text/discourse-plugin" version="0.8.20">
 api.decorateWidget("home-logo:after", helper => {
   const titleVisible = helper.attrs.minimized;
+  console.log(titleVisible);
   if (titleVisible) {
-    $(".headerLink:not(.keep)").fadeOut("fast");
+    $(".headerLink:not(.keep)").fadeOut('700');
   } else {
-    $(".headerLink").fadeIn("fast");
+    $(".headerLink").fadeIn('700');
   }
 });
 
