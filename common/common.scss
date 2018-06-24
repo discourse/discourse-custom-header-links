@@ -4,6 +4,8 @@
     float: left;
     margin-right: 5px;
     list-style: none;
+    -webkit-animation: fadein 0.7s;
+    animation: fadein 0.7s;
 
     a {
       border: none;
