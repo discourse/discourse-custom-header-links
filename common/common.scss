@@ -1,0 +1,28 @@
+@import "common/foundation/variables";
+
+.headerLink {
+    float: left;
+    margin-right: 5px;
+    list-style: none;
+
+    a {
+      border: none;
+      padding: 6px 12px;
+      color: $primary;
+      font-size: $font-up-1;
+      line-height: $line-height-medium;
+    }
+}
+
+.d-header { 
+  .header-buttons,
+  .title {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.desktop-view .vmo,
+.mobile-view .vdo {
+    display: none !important
+}
