@@ -3,9 +3,9 @@ api.decorateWidget("home-logo:after", helper => {
   const titleVisible = helper.attrs.minimized;
   console.log(titleVisible);
   if (titleVisible) {
-    $(".headerLink:not(.keep)").fadeOut('700');
+    $(".headerLink:not(.keep)").hide();
   } else {
-    $(".headerLink").fadeIn('700');
+    $(".headerLink").show();
   }
 });
 
