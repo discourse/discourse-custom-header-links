@@ -1,28 +1,26 @@
 @import "common/foundation/variables";
 
 .headerLink {
-    float: left;
-    margin-right: 5px;
-    list-style: none;
-
-    a {
-      border: none;
-      padding: 6px 10px;
-      color: $primary;
-      font-size: $font-up-1;
-      line-height: $line-height-medium;
-    }
+  list-style: none;
+  a {
+    padding: 6px 10px;
+    color: $primary;
+    font-size: $font-up-1;
+  }
 }
 
-.d-header { 
-  .header-buttons,
-  .title {
+.d-header {
+  &.hide-menus {
+    .headerLink:not(.keep) {
+      display: none;
+    }
+  }
+  .header-buttons {
     display: flex;
     align-items: center;
   }
 }
-
 .desktop-view .vmo,
 .mobile-view .vdo {
-    display: none !important
+  display: none !important;
 }
