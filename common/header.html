@@ -6,13 +6,13 @@ customHeaderLinks.split("|").map(i => {
     linkText = seg[0],
     linkTitle = seg[1],
     linkHref = seg[2],
-    deviceClass = " ." + seg[3],
+    deviceClass = "." + seg[3],
     linkTarget = seg[4] === "self" ? "" : "_blank",
-    keepOnScrollClass = seg[5] === "keep" ? " .keep" : "";
+    keepOnScrollClass = seg[5] === "keep" ? ".keep" : "";
 
   api.decorateWidget("header-buttons:before", helper => {
     return helper.h(
-      "li.headerLink." + deviceClass + keepOnScrollClass,
+      "li.headerLink" + deviceClass + keepOnScrollClass,
       helper.h(
         "a",
         {
