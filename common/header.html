@@ -1,43 +1,37 @@
 <script type="text/discourse-plugin" version="0.8.20">
-api.decorateWidget("home-logo:after", helper => {
-  const titleVisible = helper.attrs.minimized;
-  if (titleVisible) {
-    $(".headerLink:not(.keep)").hide();
-  } else {
-    $(".headerLink").show();
-  }
-});
+let customHeaderLinks = settings.Custom_header_links;
 
-var chl = settings.Custom_header_links;
-
-chl.split("|").map(i => {
-  var seg = $.map(i.split(","), $.trim),
-    trgt = seg[4],
-    keep = seg[5];
-
-  if (trgt == "self") {
-    seg[4] = "";
-  } else {
-    seg[4] = "_blank";
-  }
-
-  if (keep != "keep") {
-    seg[5] = "";
-  }
+customHeaderLinks.split("|").map(i => {
+  let seg = $.map(i.split(","), $.trim),
+    linkText = seg[0],
+    linkTitle = seg[1],
+    linkHref = seg[2],
+    deviceClass = " ." + seg[3],
+    linkTarget = seg[4] === "self" ? "" : "_blank",
+    keepOnScrollClass = seg[5] === "keep" ? " .keep" : "";
 
   api.decorateWidget("header-buttons:before", helper => {
     return helper.h(
-      "li.headerLink." + seg[3] + "." + seg[5],
+      "li.headerLink." + deviceClass + keepOnScrollClass,
       helper.h(
         "a",
         {
-          href: seg[2],
-          title: seg[1],
-          target: seg[4]
+          href: linkHref,
+          title: linkTitle,
+          target: linkTarget
         },
-        seg[0]
+        linkText
       )
     );
   });
+});
+
+api.decorateWidget("home-logo:after", helper => {
+  let titleVisible = helper.attrs.minimized;
+  if (titleVisible) {
+    $(".d-header").addClass("hide-menus");
+  } else {
+    $(".d-header").removeClass("hide-menus");
+  }
 });
 </script>
