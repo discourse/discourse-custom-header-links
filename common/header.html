@@ -1,31 +1,33 @@
 <script type="text/discourse-plugin" version="0.8.20">
-let customHeaderLinks = settings.Custom_header_links;
-
-customHeaderLinks.split("|").map(i => {
-  let seg = $.map(i.split(","), $.trim),
-    linkText = seg[0],
-    linkTitle = seg[1],
-    linkHref = seg[2],
-    deviceClass = "." + seg[3],
-    linkTarget = seg[4] === "self" ? "" : "_blank",
-    keepOnScrollClass = seg[5] === "keep" ? ".keep" : "";
-
-  api.decorateWidget("header-buttons:before", helper => {
+  
+api.decorateWidget("header-buttons:before", helper => {
+      
+    let customHeaderLinks = settings.Custom_header_links;
     return helper.h(
-      "li.headerLink" + deviceClass + keepOnScrollClass,
-      helper.h(
-        "a",
-        {
-          href: linkHref,
-          title: linkTitle,
-          target: linkTarget
-        },
-        linkText
-      )
+        "ul.headerLinks",
+        customHeaderLinks.split("|").map(i => {
+            let seg = $.map(i.split(","), $.trim),
+                linkText = seg[0],
+                linkTitle = seg[1],
+                linkHref = seg[2],
+                deviceClass = "." + seg[3],
+                linkTarget = seg[4] === "self" ? "" : "_blank",
+                keepOnScrollClass = seg[5] === "keep" ? ".keep" : "";
+            return helper.h(
+                "li.headerLink" + deviceClass + keepOnScrollClass,
+                helper.h(
+                    "a",
+                    {
+                      href: linkHref,
+                      title: linkTitle,
+                      target: linkTarget
+                    },
+                    linkText
+                )
+            );
+        })
     );
-  });
 });
-
 api.decorateWidget("home-logo:after", helper => {
   let titleVisible = helper.attrs.minimized;
   if (titleVisible) {
@@ -35,3 +37,4 @@ api.decorateWidget("home-logo:after", helper => {
   }
 });
 </script>
+

@@ -1,6 +1,7 @@
 @import "common/foundation/variables";
 
 .headerLink {
+  display: inline-block;
   list-style: none;
   a {
     padding: 6px 10px;
@@ -23,4 +24,8 @@
 .desktop-view .vmo,
 .mobile-view .vdo {
   display: none !important;
+}
+
+.headerLinks {
+    margin: 0;
 }
