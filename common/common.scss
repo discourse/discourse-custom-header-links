@@ -1,25 +1,27 @@
 @import "common/foundation/variables";
 
-.headerLink {
-  list-style: none;
-  a {
-    padding: 6px 10px;
-    color: $header_primary;
-    font-size: $font-up-1;
-  }
-}
-
 .d-header {
   &.hide-menus {
     .headerLink:not(.keep) {
       display: none;
     }
   }
-  .header-buttons {
-    display: flex;
-    align-items: center;
+}
+
+.custom-header-links {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  .headerLink {
+    list-style: none;
+    a {
+      padding: 6px 10px;
+      color: $header_primary;
+      font-size: $font-up-1;
+    }
   }
 }
+
 .desktop-view .vmo,
 .mobile-view .vdo {
   display: none !important;

@@ -1,38 +1,65 @@
 <script type="text/discourse-plugin" version="0.8.20">
-let customHeaderLinks = settings.Custom_header_links;
+  const customHeaderLinks = settings.Custom_header_links;
 
-customHeaderLinks.split("|").map(i => {
-  let seg = $.map(i.split(","), $.trim),
-    linkText = seg[0],
-    linkTitle = seg[1],
-    linkHref = seg[2],
-    deviceClass = "." + seg[3],
-    linkTarget = seg[4] === "self" ? "" : "_blank",
-    keepOnScrollClass = seg[5] === "keep" ? ".keep" : "";
+  if (!customHeaderLinks.length) return;
+
+  const h = require("virtual-dom").h;
+  const headerLinks = [];
+
+  customHeaderLinks.split("|").map(i => {
+    const seg = $.map(i.split(","), $.trim);
+    const linkText = seg[0];
+    const linkTitle = seg[1];
+    const linkHref = seg[2];
+    const deviceClass = `.${seg[3]}`;
+    const linkTarget = seg[4] === "self" ? "" : "_blank";
+    const keepOnScrollClass = seg[5] === "keep" ? ".keep" : "";
+    const linkClass = `.${linkText.trim().toLowerCase().replace(/\s/gi, '-')}`;
+
+    if (!linkTarget) {
+      headerLinks.push(
+        h(
+          `li.headerLink${deviceClass}${keepOnScrollClass}${linkClass}`,
+          h(
+            "a",
+            {
+              title: linkTitle,
+              href: linkHref
+            },
+            linkText
+          )
+        )
+      );
+    } else {
+      headerLinks.push(
+        h(
+          `li.headerLink${deviceClass}${keepOnScrollClass}${linkClass}`,
+          h(
+            "a",
+            {
+              title: linkTitle,
+              href: linkHref,
+              target: linkTarget
+            },
+            linkText
+          )
+        )
+      );
+    }
+  });
 
   api.decorateWidget("header-buttons:before", helper => {
     return helper.h(
-      "li.headerLink" + deviceClass + keepOnScrollClass,
-      helper.h(
-        "a",
-        {
-          href: linkHref,
-          title: linkTitle,
-          target: linkTarget,
-          attributes: { "data-auto-route": "true" }
-        },
-        linkText
-      )
+      "ul.custom-header-links", headerLinks
     );
   });
-});
 
-api.decorateWidget("home-logo:after", helper => {
-  let titleVisible = helper.attrs.minimized;
-  if (titleVisible) {
-    $(".d-header").addClass("hide-menus");
-  } else {
-    $(".d-header").removeClass("hide-menus");
-  }
-});
+  api.decorateWidget("home-logo:after", helper => {
+    let titleVisible = helper.attrs.minimized;
+    if (titleVisible) {
+      $(".d-header").addClass("hide-menus");
+    } else {
+      $(".d-header").removeClass("hide-menus");
+    }
+  });
 </script>
