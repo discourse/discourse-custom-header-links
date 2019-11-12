@@ -26,3 +26,14 @@
 .mobile-view .vdo {
   display: none !important;
 }
+
+@if $links_position == left {
+  .custom-header-links {
+    margin-left: 1em;
+  }
+  .hide-menus {
+    .custom-header-links {
+      display: none;
+    }
+  }
+}

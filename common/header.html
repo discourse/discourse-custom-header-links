@@ -1,5 +1,6 @@
 <script type="text/discourse-plugin" version="0.8.20">
   const customHeaderLinks = settings.Custom_header_links;
+  const linksPosition = (settings.links_position === "right") ? "header-buttons:before" : "home-logo:after";
 
   if (!customHeaderLinks.length) return;
 
@@ -48,7 +49,7 @@
     }
   });
 
-  api.decorateWidget("header-buttons:before", helper => {
+  api.decorateWidget(linksPosition, helper => {
     return helper.h(
       "ul.custom-header-links", headerLinks
     );
