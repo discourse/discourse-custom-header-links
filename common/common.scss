@@ -37,3 +37,17 @@
     }
   }
 }
+
+@if $min_user_level == user {
+  html.anon {
+    .custom-header-links {
+      display: none;
+    }
+  }
+} @else if $min_user_level == staff {
+  body:not(.staff) {
+    .custom-header-links {
+      display: none;
+    }
+  }
+}

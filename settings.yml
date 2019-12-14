@@ -12,3 +12,13 @@ links_position:
     - left
   description:
     en: "Note that when links are displayed on the left, they're automatically hidden while scrolling within topics to make room for the title"
+
+min_user_level:
+  default: anon
+  type: enum
+  choices:
+    - anon
+    - user
+    - staff
+  description:
+    en: "e.g. <b>user</b> will hide all links for anonymous users"
