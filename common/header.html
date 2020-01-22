@@ -1,6 +1,9 @@
 <script type="text/discourse-plugin" version="0.8.20">
   const customHeaderLinks = settings.Custom_header_links;
   const linksPosition = (settings.links_position === "right") ? "header-buttons:before" : "home-logo:after";
+  const user = Discourse.User.current();
+
+  console.log(user);
 
   if (!customHeaderLinks.length) return;
 
