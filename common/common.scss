@@ -12,15 +12,17 @@
   display: inline-flex;
   align-items: center;
   margin: 0;
+  .headerLink:first-child {
+    a {
+      border-top: 2px solid blue;
+    }
+  }
   .headerLink {
     list-style: none;
     a {
       padding: 6px 10px;
       color: $header_primary;
       font-size: $font-up-1;
-    }
-    a:first-child {
-      border-top: 2px solid blue;
     }
   }
 }
