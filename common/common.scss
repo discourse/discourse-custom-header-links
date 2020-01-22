@@ -19,6 +19,9 @@
       color: $header_primary;
       font-size: $font-up-1;
     }
+    a:first-child {
+      border-top: 2px solid blue;
+    }
   }
 }
 
