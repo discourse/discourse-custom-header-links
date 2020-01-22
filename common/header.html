@@ -63,17 +63,12 @@
     });
 
     api.decorateWidget(linksPosition, helper => {
+      const addedClass = linksPosition === 'header-buttons:before' ? 'default-header-highlights' : 'profile-header-highlights';
+
       return helper.h(
-        "ul.custom-header-links", headerLinks
+        `ul.custom-header-links.${addedClass}`, headerLinks
       );
     });
-
-    console.log(linksPosition);
-
-    api.decorateWidget(linksPosition, helper => {
-      const addedClass = linksPosition === 'header-buttons:before' ? 'default-header-highlights' : 'profile-header-highlights';
-      $("ul.custom-header-links").addClass(addedClass);
-    })
   }
 
   if ((admin || profileType === 'RainmakersAdmin') && adminHeaderLinks.length) {
