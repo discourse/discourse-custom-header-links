@@ -63,7 +63,7 @@
     });
 
     api.decorateWidget(linksPosition, helper => {
-      const addedClass = linksPosition === 'header-buttons:before' ? 'default-header-highlights' : 'profile-header-highlights';
+      const addedClass = linksPosition === 'home-logo:after' ? 'default-header-highlights' : 'profile-header-highlights';
 
       return helper.h(
         `ul.custom-header-links.${addedClass}`, headerLinks
