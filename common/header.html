@@ -67,6 +67,13 @@
         "ul.custom-header-links", headerLinks
       );
     });
+
+    console.log(linksPosition);
+
+    api.decorateWidget(linksPosition, helper => {
+      const addedClass = linksPosition === 'header-buttons:before' ? 'default-header-highlights' : 'profile-header-highlights';
+      $("ul.custom-header-links").addClass(addedClass);
+    })
   }
 
   if ((admin || profileType === 'RainmakersAdmin') && adminHeaderLinks.length) {
@@ -81,12 +88,7 @@
 
   if (!admin && !profileType && defaultHeaderLinks.length) {
     makeLinks(defaultHeaderLinks);
-    api.decorateWidget(linksPosition, helper => $("ul.custom-header-links").addClass("default-header-highlights"))
-  } else {
-    api.decorateWidget(linksPosition, helper => $("ul.custom-header-links").addClass("profile-header-highlights"))
   }
-
-
 
   api.decorateWidget("home-logo:after", helper => {
     let titleVisible = helper.attrs.minimized;
