@@ -1,62 +1,87 @@
 <script type="text/discourse-plugin" version="0.8.20">
-  const customHeaderLinks = settings.Custom_header_links;
-  const linksPosition = (settings.links_position === "right") ? "header-buttons:before" : "home-logo:after";
-  const user = Discourse.User.current();
+  const {
+    Candidate_header_links: candidateHeaderLinks = [],
+    Admin_header_links: adminHeaderLinks = [],
+    Employee_header_links: employeeHeaderLinks = [],
+    Default_header_links: defaultHeaderLinks = [],
+  } = settings;
 
-  console.log(user);
+  const {
+    admin,
+    custom_fields: {
+      profile_type: profileType,
+    } = {},
+  } = Discourse.User.current();
 
-  if (!customHeaderLinks.length) return;
+  const linksPosition = !profileType ? "header-buttons:before" : "home-logo:after";
 
   const h = require("virtual-dom").h;
-  const headerLinks = [];
 
-  customHeaderLinks.split("|").map(i => {
-    const seg = $.map(i.split(","), $.trim);
-    const linkText = seg[0];
-    const linkTitle = seg[1];
-    const linkHref = seg[2];
-    const deviceClass = `.${seg[3]}`;
-    const linkTarget = seg[4] === "self" ? "" : "_blank";
-    const keepOnScrollClass = seg[5] === "keep" ? ".keep" : "";
-    const linkClass = `.${linkText.trim().toLowerCase().replace(/\s/gi, '-')}`;
+  const makeLinks = linksList => {
+    const headerLinks = [];
 
-    if (!linkTarget) {
-      headerLinks.push(
-        h(
-          `li.headerLink${deviceClass}${keepOnScrollClass}${linkClass}`,
+    linksList.split("|").map(i => {
+      const seg = $.map(i.split(","), $.trim);
+      const linkText = seg[0];
+      const linkTitle = seg[1];
+      const linkHref = seg[2];
+      const deviceClass = `.${seg[3]}`;
+      const linkTarget = seg[4] === "self" ? "" : "_blank";
+      const keepOnScrollClass = seg[5] === "keep" ? ".keep" : "";
+      const linkClass = `.${linkText.trim().toLowerCase().replace(/\s/gi, '-')}`;
+
+      if (!linkTarget) {
+        headerLinks.push(
           h(
-            "a",
-            {
-              title: linkTitle,
-              href: linkHref
-            },
-            linkText
+            `li.headerLink${deviceClass}${keepOnScrollClass}${linkClass}`,
+            h(
+              "a",
+              {
+                title: linkTitle,
+                href: linkHref
+              },
+              linkText
+            )
           )
-        )
-      );
-    } else {
-      headerLinks.push(
-        h(
-          `li.headerLink${deviceClass}${keepOnScrollClass}${linkClass}`,
+        );
+      } else {
+        headerLinks.push(
           h(
-            "a",
-            {
-              title: linkTitle,
-              href: linkHref,
-              target: linkTarget
-            },
-            linkText
+            `li.headerLink${deviceClass}${keepOnScrollClass}${linkClass}`,
+            h(
+              "a",
+              {
+                title: linkTitle,
+                href: linkHref,
+                target: linkTarget
+              },
+              linkText
+            )
           )
-        )
-      );
-    }
-  });
+        );
+      }
+    });
 
-  api.decorateWidget(linksPosition, helper => {
-    return helper.h(
-      "ul.custom-header-links", headerLinks
-    );
-  });
+    api.decorateWidget(linksPosition, helper => {
+      return helper.h(
+        "ul.custom-header-links", headerLinks
+      );
+    });
+  }
+
+  if ((admin || profileType === 'RainmakersAdmin') && adminHeaderLinks.length) {
+    makeLinks(adminHeaderLinks);
+  }
+  if (profileType === 'Candidate' && candidateHeaderLinks.length) {
+    makeLinks(candidateHeaderLinks);
+  }
+  if (profileType === 'Employee' && employeeHeaderLinks.length) {
+    makeLinks(employeeHeaderLinks);
+  }
+
+  if (!profileType && defaulHeaderLinks.length) {
+    makeLinks(defaulHeaderLinks);
+  }
 
   api.decorateWidget("home-logo:after", helper => {
     let titleVisible = helper.attrs.minimized;
