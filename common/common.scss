@@ -31,6 +31,9 @@
     text-align: center;
   }
   .headerLink:first-child {
+    a {
+      font-weight: 700;
+    }
     a:after {
       display: block;
       content: "";
