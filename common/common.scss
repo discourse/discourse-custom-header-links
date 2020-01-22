@@ -22,6 +22,16 @@
   }
 }
 .profile-header-highlights {
+  a {
+    padding: 0px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    display: inline-block;
+    transition: color 0.2s linear;
+    color: #3c3f46;
+    text-align: center;
+  }
   .headerLink:first-child {
     a:after {
       display: block;
@@ -38,7 +48,24 @@
 }
 
 .default-header-highlights {
-  .headerLink:first-child {
+  a {
+    padding: 0px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.2s linear;
+    color: #9ba1a7;
+    text-align: center;
+    min-width: max-content;
+    width: max-content;
+  }
+  a:hover {
+    color: #3c3f46;
+  }
+  .headerLink:last-child {
+    a {
+      color: #3c3f46;
+    }
     a:after {
       display: block;
       content: "";
