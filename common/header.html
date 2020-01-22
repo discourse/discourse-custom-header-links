@@ -11,7 +11,7 @@
     custom_fields: {
       profile_type: profileType,
     } = {},
-  } = Discourse.User.current();
+  } = Discourse.User.current() || {};
 
   const linksPosition = !profileType && !admin ? "home-logo:after" : "header-buttons:before";
 
@@ -72,25 +72,20 @@
   }
 
   if ((admin || profileType === 'RainmakersAdmin') && adminHeaderLinks.length) {
+    console.log('adminHeaderLinks');
     makeLinks(adminHeaderLinks);
   }
   if (profileType === 'Candidate' && candidateHeaderLinks.length) {
+    console.log('candidateHeaderLinks');
     makeLinks(candidateHeaderLinks);
   }
   if (profileType === 'Employee' && employeeHeaderLinks.length) {
+    console.log('employeeHeaderLinks');
     makeLinks(employeeHeaderLinks);
   }
 
   if (!admin && !profileType && defaultHeaderLinks.length) {
+    console.log('defaultHeaderLinks');
     makeLinks(defaultHeaderLinks);
   }
-
-  api.decorateWidget("home-logo:after", helper => {
-    let titleVisible = helper.attrs.minimized;
-    if (titleVisible) {
-      $(".d-header").addClass("hide-menus");
-    } else {
-      $(".d-header").removeClass("hide-menus");
-    }
-  });
 </script>
