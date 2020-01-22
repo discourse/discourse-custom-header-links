@@ -12,17 +12,43 @@
   display: inline-flex;
   align-items: center;
   margin: 0;
-  .headerLink:first-child {
-    a {
-      border-top: 2px solid blue;
-    }
-  }
   .headerLink {
     list-style: none;
     a {
       padding: 6px 10px;
       color: $header_primary;
       font-size: $font-up-1;
+    }
+  }
+}
+.profile-header-highlights {
+  .headerLink:first-child {
+    a:after {
+      display: block;
+      content: "";
+      position: absolute;
+      border-bottom: 2px solid #15dad4;
+      width: 20px;
+      right: 50%;
+      bottom: -5px;
+      -webkit-transform: translateX(50%);
+      transform: translateX(50%);
+    }
+  }
+}
+
+.default-header-highlights {
+  .headerLink:first-child {
+    a:after {
+      display: block;
+      content: "";
+      position: absolute;
+      border-bottom: 5px solid #15dad4;
+      width: 70%;
+      right: 50%;
+      top: -16px;
+      -webkit-transform: translateX(50%);
+      transform: translateX(50%);
     }
   }
 }

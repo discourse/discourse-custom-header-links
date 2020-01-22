@@ -81,7 +81,12 @@
 
   if (!admin && !profileType && defaultHeaderLinks.length) {
     makeLinks(defaultHeaderLinks);
+    api.decorateWidget(linksPosition, helper => $("ul.custom-header-links").addClass("default-header-highlights"))
+  } else {
+    api.decorateWidget(linksPosition, helper => $("ul.custom-header-links").addClass("profile-header-highlights"))
   }
+
+
 
   api.decorateWidget("home-logo:after", helper => {
     let titleVisible = helper.attrs.minimized;
