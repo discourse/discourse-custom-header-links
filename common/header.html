@@ -13,7 +13,7 @@
     } = {},
   } = Discourse.User.current();
 
-  const linksPosition = !profileType && !admin ? "header-buttons:before" : "home-logo:after";
+  const linksPosition = !profileType && !admin ? "home-logo:after" : "header-buttons:before";
 
   const h = require("virtual-dom").h;
 
