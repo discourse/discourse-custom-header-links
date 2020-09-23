@@ -1,0 +1,6 @@
+{
+  "extends": "eslint-config-discourse",
+  "globals": {
+    "settings": true
+  }
+}
