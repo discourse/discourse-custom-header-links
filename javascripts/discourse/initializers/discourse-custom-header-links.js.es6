@@ -1,6 +1,7 @@
 import { h } from "virtual-dom";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { wantsNewWindow } from "discourse/lib/intercept-click";
+import DiscourseURL from "discourse/lib/url";
 
 export default {
   name: "discourse-custom-header-links",
