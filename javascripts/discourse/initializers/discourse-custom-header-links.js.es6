@@ -1,5 +1,6 @@
 import { h } from "virtual-dom";
 import { withPluginApi } from "discourse/lib/plugin-api";
+import { wantsNewWindow } from "discourse/lib/intercept-click";
 
 export default {
   name: "discourse-custom-header-links",
@@ -22,17 +23,11 @@ export default {
         .split("|")
         .filter(Boolean)
         .map((customHeaderLinksArray) => {
-          const [
-            linkText,
-            linkTitle,
-            linkHref,
-            device,
-            target,
-            keepOnScroll,
-          ] = customHeaderLinksArray
-            .split(",")
-            .filter(Boolean)
-            .map((x) => x.trim());
+          const [linkText, linkTitle, linkHref, device, target, keepOnScroll] =
+            customHeaderLinksArray
+              .split(",")
+              .filter(Boolean)
+              .map((x) => x.trim());
 
           const deviceClass = `.${device}`;
           const linkTarget = target === "self" ? "" : "_blank";
@@ -75,6 +70,24 @@ export default {
           dHeader.classList.remove("hide-menus");
         }
       });
+
+      if (settings.links_position === "left") {
+        // if links are aligned left, we need to be able to open in a new tab
+        api.reopenWidget("home-logo", {
+          click(e) {
+            if (e.target.id === "site-logo") {
+              if (wantsNewWindow(e)) {
+                return false;
+              }
+              e.preventDefault();
+
+              DiscourseURL.routeToTag($(e.target).closest("a")[0]);
+
+              return false;
+            }
+          },
+        });
+      }
     });
   },
 };
