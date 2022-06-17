@@ -1,6 +1,6 @@
 {
   "name": "Custom Header Links",
+  "component": true,
   "about_url": "https://meta.discourse.org/t/custom-header-links/90588",
-  "license_url": "https://github.com/discourse/discourse-custom-header-links/blob/main/LICENSE",
-  "component": true
+  "license_url": "https://github.com/discourse/discourse-custom-header-links/blob/main/LICENSE"
 }
