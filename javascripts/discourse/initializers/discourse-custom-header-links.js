@@ -47,6 +47,11 @@ export default {
             anchorAttributes.target = linkTarget;
           }
 
+          if (locale !== ""
+              && document.documentElement.lang
+              && document.documentElement.lang !== locale
+          ) { return ; }
+
           headerLinks.push(
             h(
               `li.headerLink${deviceClass}${keepOnScrollClass}${localeClass}${linkClass}`,
