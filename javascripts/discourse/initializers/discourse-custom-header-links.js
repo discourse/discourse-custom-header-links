@@ -24,11 +24,18 @@ export default {
         .split("|")
         .filter(Boolean)
         .map((customHeaderLinksArray) => {
-          const [linkText, linkTitle, linkHref, device, target, keepOnScroll, locale] =
-            customHeaderLinksArray
-              .split(",")
-              .filter(Boolean)
-              .map((x) => x.trim());
+          const [
+            linkText,
+            linkTitle,
+            linkHref,
+            device,
+            target,
+            keepOnScroll,
+            locale,
+          ] = customHeaderLinksArray
+            .split(",")
+            .filter(Boolean)
+            .map((x) => x.trim());
 
           const deviceClass = `.${device}`;
           const linkTarget = target === "self" ? "" : "_blank";
@@ -47,10 +54,13 @@ export default {
             anchorAttributes.target = linkTarget;
           }
 
-          if (locale !== ""
-              && document.documentElement.lang
-              && document.documentElement.lang !== locale
-          ) { return ; }
+          if (
+            locale !== "" &&
+            document.documentElement.lang &&
+            document.documentElement.lang !== locale
+          ) {
+            return;
+          }
 
           headerLinks.push(
             h(
