@@ -24,11 +24,18 @@ export default {
         .split("|")
         .filter(Boolean)
         .map((customHeaderLinksArray) => {
-          const [linkText, linkTitle, linkHref, device, target, keepOnScroll] =
-            customHeaderLinksArray
-              .split(",")
-              .filter(Boolean)
-              .map((x) => x.trim());
+          const [
+            linkText,
+            linkTitle,
+            linkHref,
+            device,
+            target,
+            keepOnScroll,
+            locale,
+          ] = customHeaderLinksArray
+            .split(",")
+            .filter(Boolean)
+            .map((x) => x.trim());
 
           const deviceClass = `.${device}`;
           const linkTarget = target === "self" ? "" : "_blank";
@@ -36,6 +43,8 @@ export default {
           const linkClass = `.${linkText
             .toLowerCase()
             .replace(/\s/gi, "-")}-custom-header-links`;
+
+          const localeClass = locale === "" ? "" : `.${locale}`;
 
           const anchorAttributes = {
             title: linkTitle,
@@ -45,9 +54,17 @@ export default {
             anchorAttributes.target = linkTarget;
           }
 
+          if (
+            locale !== "" &&
+            document.documentElement.lang &&
+            document.documentElement.lang !== locale
+          ) {
+            return;
+          }
+
           headerLinks.push(
             h(
-              `li.headerLink${deviceClass}${keepOnScrollClass}${linkClass}`,
+              `li.headerLink${deviceClass}${keepOnScrollClass}${localeClass}${linkClass}`,
               h("a", anchorAttributes, linkText)
             )
           );
