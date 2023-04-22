@@ -44,7 +44,7 @@ export default {
             .toLowerCase()
             .replace(/\s/gi, "-")}-custom-header-links`;
 
-          const localeClass = locale === "" ? "" : `.${locale}`;
+          const localeClass = locale === undefined ? "" : `.${locale}`;
 
           const anchorAttributes = {
             title: linkTitle,
@@ -55,7 +55,7 @@ export default {
           }
 
           if (
-            locale !== "" &&
+            locale !== undefined &&
             document.documentElement.lang &&
             document.documentElement.lang !== locale
           ) {
