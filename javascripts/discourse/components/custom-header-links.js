@@ -18,8 +18,9 @@ export default class CustomHeaderLinks extends Component {
         locale,
       ] = item.split(",").map((s) => s.trim());
 
-      if (!linkText || (locale && document.documentElement.lang !== locale))
+      if (!linkText || (locale && document.documentElement.lang !== locale)) {
         return result;
+      }
 
       const linkClass = `${dasherize(linkText)}-custom-header-links`; // legacy name
 
