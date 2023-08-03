@@ -1,0 +1,25 @@
+{{#if this.shouldShow}}
+  <ul
+    class="custom-header-links
+      {{if @scrolledTopic 'custom-header-links--hide-links'}}"
+  >
+    {{#each this.links as |link|}}
+      <li
+        class="headerLink
+          {{link.device}}
+          {{link.keepOnScrollClass}}
+          {{link.locale}}
+          {{link.linkClass}}
+          {{link.keepOnScroll}}"
+      >
+        <a
+          title={{link.anchorAttributes.title}}
+          href={{link.anchorAttributes.href}}
+          target={{link.anchorAttributes.target}}
+        >
+          {{link.linkText}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+{{/if}}
