@@ -1,3 +1,7 @@
+.before-header-panel-outlet {
+  display: flex;
+}
+
 @if $links_position == "right" {
   .before-header-panel-outlet {
     margin-left: auto;
@@ -37,4 +41,23 @@
 .desktop-view .headerLink--vmo,
 .mobile-view .headerLink--vdo {
   display: none;
+}
+
+// for compatibility with the discourse-header-search component
+
+.floating-search-input-wrapper {
+  flex: 1 1 auto;
+  margin: 0 1em;
+  @if $links_position == "left" {
+    order: 2;
+  }
+
+  .floating-search-input {
+    width: 100%;
+    margin: 0;
+  }
+
+  .search-menu {
+    width: 100% !important; // overrides very specific selector
+  }
 }
