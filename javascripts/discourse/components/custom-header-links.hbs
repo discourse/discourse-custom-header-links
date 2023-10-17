@@ -1,7 +1,7 @@
 {{#if this.shouldShow}}
   <ul
     class="custom-header-links
-      {{if @scrolledTopic 'custom-header-links--hide-links'}}"
+      {{if @outletArgs.attrs.topic 'custom-header-links--hide-links'}}"
   >
     {{#each this.links as |link|}}
       <li
