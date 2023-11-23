@@ -1,9 +1,81 @@
-Custom_header_links:
-  type: list
-  list_type: simple
-  default: "External link, this link will open in a new tab, https://meta.discourse.org, vdo, blank, remove|Most Liked, Posts with the most amount of likes, /latest/?order=op_likes, vdo, self, keep|Privacy, Our Privacy Policy, /privacy, vdm, self, keep"
+links:
   description:
-    en: "Comma delimited in this order: link text, link title, URL, view, target, hide on scroll<br><b>Link text:</b> The text for the link<br><b>Link title:</b> the text that shows when the link is hovered<br><b>URL:</b> The path for the link (can be relative)<br><b>View:</b> vdm = desktop and mobile, vdo = desktop only, vmo = mobile only<br><b>Target:</b> blank = opens in a new tab, self = opens in the same tab<br><b>Hide on scroll:</b> remove = hides the link when the title is expanded on topic pages keep = keeps the link visible even when the title is visible on topic pages<br><b>Language:</b> blank = no locale assoaciated to the link, else insert a locale code (en, fr, de, ...)"
+    en: "Add or edit header links using the editor"
+  default: >-
+    [
+      {
+        "text": "External link",
+        "title": "this link will open in a new tab",
+        "url": "https://meta.discourse.org",
+        "view": "desktop",
+        "open_in_new_tab": true,
+        "keep_on_scroll": false,
+        "locale": ""
+      },
+      {
+        "text": "Most Liked",
+        "title": "Posts with the most amount of likes",
+        "url": "/latest/?order=op_likes",
+        "view": "desktop",
+        "open_in_new_tab": false,
+        "keep_on_scroll": true,
+        "locale": ""
+      },
+      {
+        "text": "Privacy",
+        "title": "Our Privacy Policy",
+        "url": "/privacy",
+        "view": "all",
+        "open_in_new_tab": false,
+        "keep_on_scroll": true,
+        "locale": ""
+      }
+    ]
+  json_schema: '
+    {
+      "type": "array",
+      "format": "tabs-top",
+      "title": "Links",
+      "items": {
+        "type": "object",
+        "title": "Link",
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "url": {
+            "type": "string",
+            "title": "URL"
+          },
+          "view": {
+            "type": "string",
+            "title": "View",
+            "enum": ["desktop", "mobile", "all"]
+          },
+          "open_in_new_tab": {
+            "type": "boolean",
+            "title": "Opens in new tab",
+            "format": "checkbox"
+          },
+          "keep_on_scroll": {
+            "type": "boolean",
+            "title": "Keep on scroll",
+            "format": "checkbox"
+          },
+          "locale": {
+            "type": "string",
+            "title": "Language",
+            "description": "Associate this link to a locale"
+          }
+        }
+      }
+    }
+  '
 
 links_position:
   default: right
