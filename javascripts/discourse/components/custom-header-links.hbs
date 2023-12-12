@@ -11,14 +11,7 @@
       }}"
   >
     {{#each this.links as |link|}}
-      <li
-        class="headerLink
-          {{link.device}}
-          {{link.keepOnScrollClass}}
-          {{link.locale}}
-          {{link.linkClass}}
-          {{link.keepOnScroll}}"
-      >
+      <li class="headerLink {{link.class}}">
         <a
           title={{link.anchorAttributes.title}}
           href={{link.anchorAttributes.href}}

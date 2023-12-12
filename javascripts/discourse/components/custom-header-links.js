@@ -1,40 +1,54 @@
 import Component from "@glimmer/component";
 import { dasherize } from "@ember/string";
+import { inject as service } from "@ember/service";
 
 export default class CustomHeaderLinks extends Component {
+  @service site;
+
   get shouldShow() {
-    return settings.Custom_header_links?.length > 0;
+    return JSON.parse(settings.links).length > 0;
   }
 
   get links() {
-    return settings.Custom_header_links.split("|").reduce((result, item) => {
-      let [
-        linkText,
-        linkTitle,
-        linkHref,
-        device,
-        target = "",
-        keepOnScroll,
+    return JSON.parse(settings.links).reduce((result, item) => {
+      const {
+        text: linkText,
+        title: linkTitle,
+        url: linkHref,
+        view,
+        open_in_new_tab: openInNewTab,
+        keep_on_scroll: keepOnScroll,
         locale,
-      ] = item.split(",").map((s) => s.trim());
+      } = item;
 
       if (!linkText || (locale && document.documentElement.lang !== locale)) {
         return result;
       }
 
-      const linkClass = `${dasherize(linkText)}-custom-header-links`; // legacy name
+      if (view === "desktop" && this.site.mobileView) {
+        return result;
+      }
+      if (view === "mobile" && !this.site.mobileView) {
+        return result;
+      }
+
+      const classes = [
+        `${dasherize(linkText)}-custom-header-links`, // legacy name
+        `headerLink--${keepOnScroll ? "keep" : "remove"}`,
+      ];
+
+      if (locale) {
+        classes.push(`headerLink--${locale}`);
+      }
 
       const anchorAttributes = {
         title: linkTitle,
         href: linkHref,
-        target: target === "self" ? "" : "_blank",
+        target: openInNewTab ? "_blank" : "self",
       };
 
       result.push({
-        device: `headerLink--${device}`,
-        keepOnScroll: `headerLink--${keepOnScroll}`,
-        locale: `headerLink--${locale}`,
-        linkClass,
+        class: classes.join(" "),
         anchorAttributes,
         linkText,
       });
