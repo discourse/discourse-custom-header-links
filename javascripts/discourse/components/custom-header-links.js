@@ -1,22 +1,40 @@
 import Component from "@glimmer/component";
+import { tracked } from "@glimmer/tracking";
+import { inject as service } from "@ember/service";
 import { dasherize } from "@ember/string";
 
 export default class CustomHeaderLinks extends Component {
+  @service themeStore;
+  @tracked loading = true;
+
+  customHeaderLinks;
+
+  constructor() {
+    super(...arguments);
+
+    this.themeStore
+      .fetch(16, "custom_header_links")
+      .then((result) => {
+        this.customHeaderLinks = result;
+      })
+      .finally(() => {
+        this.loading = false;
+      });
+  }
+
   get shouldShow() {
-    return settings.Custom_header_links?.length > 0;
+    return !this.loading && this.customHeaderLinks?.length > 0;
   }
 
   get links() {
-    return settings.Custom_header_links.split("|").reduce((result, item) => {
-      let [
-        linkText,
-        linkTitle,
-        linkHref,
-        device,
-        target = "",
-        keepOnScroll,
-        locale,
-      ] = item.split(",").map((s) => s.trim());
+    return this.customHeaderLinks.reduce((result, item) => {
+      const linkText = item.name;
+      const linkTitle = item.title;
+      const linkHref = item.url;
+      const device = item.device;
+      const target = item.target || "";
+      const keepOnScroll = item.hide_on_scroll;
+      const locale = item.locale;
 
       if (!linkText || (locale && document.documentElement.lang !== locale)) {
         return result;
