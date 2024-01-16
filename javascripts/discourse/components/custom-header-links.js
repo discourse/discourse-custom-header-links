@@ -3,11 +3,11 @@ import { dasherize } from "@ember/string";
 
 export default class CustomHeaderLinks extends Component {
   get shouldShow() {
-    return settings.Custom_header_links?.length > 0;
+    return settings.custom_header_links?.length > 0;
   }
 
   get links() {
-    return settings.Custom_header_links.split("|").reduce((result, item) => {
+    return settings.custom_header_links.split("|").reduce((result, item) => {
       let [
         linkText,
         linkTitle,

@@ -1,4 +1,4 @@
-Custom_header_links:
+custom_header_links:
   type: list
   list_type: simple
   default: "External link, this link will open in a new tab, https://meta.discourse.org, vdo, blank, remove|Most Liked, Posts with the most amount of likes, /latest/?order=op_likes, vdo, self, keep|Privacy, Our Privacy Policy, /privacy, vdm, self, keep"
