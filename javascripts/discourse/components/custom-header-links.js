@@ -7,16 +7,14 @@ export default class CustomHeaderLinks extends Component {
   }
 
   get links() {
-    return settings.custom_header_links.split("|").reduce((result, item) => {
-      let [
-        linkText,
-        linkTitle,
-        linkHref,
-        device,
-        target = "",
-        keepOnScroll,
-        locale,
-      ] = item.split(",").map((s) => s.trim());
+    return settings.custom_header_links.reduce((result, link) => {
+      const linkText = link.text;
+      const linkTitle = link.title;
+      const linkHref = link.url;
+      const target = link.target;
+      const keepOnScroll = link.hide_on_scroll;
+      const locale = link.locale;
+      const device = link.view;
 
       if (!linkText || (locale && document.documentElement.lang !== locale)) {
         return result;

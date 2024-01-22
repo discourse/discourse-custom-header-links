@@ -1,5 +1,29 @@
 en:
   theme_metadata:
     settings:
-      custom_header_links: "Comma delimited in this order: link text, link title, URL, view, target, hide on scroll<br><b>Link text:</b> The text for the link<br><b>Link title:</b> the text that shows when the link is hovered<br><b>URL:</b> The path for the link (can be relative)<br><b>View:</b> vdm = desktop and mobile, vdo = desktop only, vmo = mobile only<br><b>Target:</b> blank = opens in a new tab, self = opens in the same tab<br><b>Hide on scroll:</b> remove = hides the link when the title is expanded on topic pages keep = keeps the link visible even when the title is visible on topic pages<br><b>Language:</b> blank = no locale assoaciated to the link, else insert a locale code (en, fr, de, ...)"
       links_position: "Note that when links are displayed on the left, they're automatically hidden while scrolling within topics to make room for the title"
+      custom_header_links:
+        description: Custom links to be displayed in the header
+        schema:
+          properties:
+            text:
+              description: The text for the link
+            title:
+              description: The title attribute for the link
+            url:
+              description: The URL for the link
+            view:
+              description: |
+                vdm = desktop and mobile
+                vdo = desktop only
+                vmo = mobile only
+            target:
+              description: |
+                blank = opens in a new tab
+                self = opens in the same tab
+            hide_on_scroll:
+              description: |
+                remove = hides the link when the title is expanded on topic pages
+                keep = keeps the link visible even when the title is visible on topic pages
+            locale:
+              description: The locale in which the link should be displayed on. The link will be displayed on all locales if left blank.

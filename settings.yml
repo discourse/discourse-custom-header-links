@@ -1,7 +1,65 @@
 custom_header_links:
-  type: list
-  list_type: simple
-  default: "External link, this link will open in a new tab, https://meta.discourse.org, vdo, blank, remove|Most Liked, Posts with the most amount of likes, /latest/?order=op_likes, vdo, self, keep|Privacy, Our Privacy Policy, /privacy, vdm, self, keep"
+  type: objects
+  default:
+    - text: "External link"
+      title: "This link will open in a new tab"
+      url: "https://meta.discourse.org"
+      view: "vdo"
+      target: "blank"
+      hide_on_scroll: "remove"
+    - text: "Most Liked"
+      title: "Posts with the most amount of likes"
+      url: "/latest/?order=op_likes"
+      view: "vdo"
+      target: "self"
+      hide_on_scroll: "keep"
+    - text: "Privacy"
+      title: "Our Privacy Policy"
+      url: "/privacy"
+      view: "vdm"
+      target: "self"
+      hide_on_scroll: "keep"
+  schema:
+    name: "link"
+    properties:
+      text:
+        type: string
+        required: true
+        validations:
+          min_length: 5
+          max_length: 100
+      title:
+        type: string
+        required: true
+        validations:
+          min_length: 5
+          max_length: 100
+      url:
+        type: string
+        required: true
+        validations:
+          min_length: 0
+          max_length: 2048
+          url: true
+      view:
+        type: enum
+        choices:
+          - vdm
+          - vdo
+          - vmo
+      target:
+        type: enum
+        choices:
+          - blank
+          - self
+      hide_on_scroll:
+        type: enum
+        choices:
+          - remove
+          - keep
+        default: keep
+      locale:
+        type: string
 
 links_position:
   default: right
