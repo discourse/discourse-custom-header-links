@@ -5,6 +5,67 @@ Custom_header_links:
   description:
     en: "Comma delimited in this order: link text, link title, URL, view, target, hide on scroll<br><b>Link text:</b> The text for the link<br><b>Link title:</b> the text that shows when the link is hovered<br><b>URL:</b> The path for the link (can be relative)<br><b>View:</b> vdm = desktop and mobile, vdo = desktop only, vmo = mobile only<br><b>Target:</b> blank = opens in a new tab, self = opens in the same tab<br><b>Hide on scroll:</b> remove = hides the link when the title is expanded on topic pages keep = keeps the link visible even when the title is visible on topic pages<br><b>Language:</b> blank = no locale assoaciated to the link, else insert a locale code (en, fr, de, ...)"
 
+links:
+  type: objects
+  default:
+    - text: "External link"
+      title: "This link will open in a new tab"
+      url: "https://meta.discourse.org"
+      view: "vdo"
+      target: "blank"
+      hide_on_scroll: "remove"
+    - text: "Most Liked"
+      title: "Posts with the most amount of likes"
+      url: "/latest/?order=op_likes"
+      view: "vdo"
+      target: "self"
+      hide_on_scroll: "keep"
+    - text: "Privacy"
+      title: "Our Privacy Policy"
+      url: "/privacy"
+      view: "vdm"
+      target: "self"
+      hide_on_scroll: "keep"
+  schema:
+    name: link
+    fields:
+      - name: text
+        type: string
+        required: true
+        validations:
+          min_length: 5
+          max_length: 100
+      - name: title
+        type: string
+        required: true
+        validations:
+          min_length: 5
+          max_length: 100
+      - name: url
+        type: string
+        required: true
+        validations:
+          min_length: 0
+          max_length: 2048
+          url: true
+      - name: view
+        type: enum
+        choices:
+          - vdm
+          - vdo
+          - vmo
+      - name: target
+        type: enum
+        choices:
+          - blank
+          - self
+      - name: hide_on_scroll
+        type: enum
+        choices:
+          - remove
+          - keep
+        default: keep
+
 links_position:
   default: right
   type: enum
