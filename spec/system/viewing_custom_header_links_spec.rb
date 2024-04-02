@@ -6,27 +6,62 @@ RSpec.describe "Viewing Custom Header Links", system: true do
   fab!(:theme) { upload_theme_component }
   let!(:custom_header_link) { PageObjects::Components::CustomHeaderLink.new }
 
-  it "should display the custom header links" do
-    visit("/")
+  context "when glimmer headers are enabled" do
+    before do
+      SiteSetting.experimental_glimmer_header_groups =
+        Group::AUTO_GROUPS[:everyone]
+    end
 
-    expect(custom_header_link).to be_visible
+    it "should display the custom header links" do
+      visit("/")
 
-    expect(custom_header_link).to have_custom_header_link(
-      "External link",
-      href: "https://meta.discourse.org",
-      title: "this link will open in a new tab",
-    )
+      expect(custom_header_link).to be_visible
 
-    expect(custom_header_link).to have_custom_header_link(
-      "Most Liked",
-      href: "/latest/?order=op_likes",
-      title: "Posts with the most amount of likes",
-    )
+      expect(custom_header_link).to have_custom_header_link(
+        "External link",
+        href: "https://meta.discourse.org",
+        title: "this link will open in a new tab"
+      )
 
-    expect(custom_header_link).to have_custom_header_link(
-      "Privacy",
-      href: "/privacy",
-      title: "Our Privacy Policy",
-    )
+      expect(custom_header_link).to have_custom_header_link(
+        "Most Liked",
+        href: "/latest/?order=op_likes",
+        title: "Posts with the most amount of likes"
+      )
+
+      expect(custom_header_link).to have_custom_header_link(
+        "Privacy",
+        href: "/privacy",
+        title: "Our Privacy Policy"
+      )
+    end
+  end
+
+  context "when glimmer headers are disabled" do
+    before { SiteSetting.experimental_glimmer_header_groups = nil }
+
+    it "should display the custom header links" do
+      visit("/")
+
+      expect(custom_header_link).to be_visible
+
+      expect(custom_header_link).to have_custom_header_link(
+        "External link",
+        href: "https://meta.discourse.org",
+        title: "this link will open in a new tab"
+      )
+
+      expect(custom_header_link).to have_custom_header_link(
+        "Most Liked",
+        href: "/latest/?order=op_likes",
+        title: "Posts with the most amount of likes"
+      )
+
+      expect(custom_header_link).to have_custom_header_link(
+        "Privacy",
+        href: "/privacy",
+        title: "Our Privacy Policy"
+      )
+    end
   end
 end
