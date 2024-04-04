@@ -8,8 +8,12 @@ RSpec.describe "Viewing Custom Header Links", system: true do
 
   context "when glimmer headers are enabled" do
     before do
-      SiteSetting.experimental_glimmer_header_groups =
-        Group::AUTO_GROUPS[:everyone]
+      if SiteSetting.respond_to?(:experimental_glimmer_header_groups)
+        SiteSetting.experimental_glimmer_header_groups =
+          Group::AUTO_GROUPS[:everyone]
+      else
+        SiteSetting.glimmer_header_mode = "enabled"
+      end
     end
 
     it "should display the custom header links" do
@@ -38,7 +42,14 @@ RSpec.describe "Viewing Custom Header Links", system: true do
   end
 
   context "when glimmer headers are disabled" do
-    before { SiteSetting.experimental_glimmer_header_groups = nil }
+    before do
+      if SiteSetting.respond_to?(:experimental_glimmer_header_groups)
+        SiteSetting.experimental_glimmer_header_groups =
+          nil
+      else
+        SiteSetting.glimmer_header_mode = "disabled"
+      end
+    end
 
     it "should display the custom header links" do
       visit("/")
