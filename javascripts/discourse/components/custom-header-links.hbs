@@ -12,12 +12,13 @@
   >
     {{#each this.links as |link|}}
       <li
-        class="headerLink
-          {{link.device}}
-          {{link.keepOnScrollClass}}
-          {{link.locale}}
-          {{link.linkClass}}
-          {{link.keepOnScroll}}"
+        class={{concat-class
+          "headerLink"
+          link.device
+          link.locale
+          link.linkClass
+          link.hideOnScroll
+        }}
       >
         <a
           title={{link.anchorAttributes.title}}

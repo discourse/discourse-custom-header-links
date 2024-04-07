@@ -9,8 +9,7 @@ RSpec.describe "Viewing Custom Header Links", system: true do
   context "when glimmer headers are enabled" do
     before do
       if SiteSetting.respond_to?(:experimental_glimmer_header_groups)
-        SiteSetting.experimental_glimmer_header_groups =
-          Group::AUTO_GROUPS[:everyone]
+        SiteSetting.experimental_glimmer_header_groups = Group::AUTO_GROUPS[:everyone]
       else
         SiteSetting.glimmer_header_mode = "enabled"
       end
@@ -24,19 +23,19 @@ RSpec.describe "Viewing Custom Header Links", system: true do
       expect(custom_header_link).to have_custom_header_link(
         "External link",
         href: "https://meta.discourse.org",
-        title: "this link will open in a new tab"
+        title: "This link will open in a new tab",
       )
 
       expect(custom_header_link).to have_custom_header_link(
         "Most Liked",
         href: "/latest/?order=op_likes",
-        title: "Posts with the most amount of likes"
+        title: "Posts with the most amount of likes",
       )
 
       expect(custom_header_link).to have_custom_header_link(
         "Privacy",
         href: "/privacy",
-        title: "Our Privacy Policy"
+        title: "Our Privacy Policy",
       )
     end
   end
@@ -44,8 +43,7 @@ RSpec.describe "Viewing Custom Header Links", system: true do
   context "when glimmer headers are disabled" do
     before do
       if SiteSetting.respond_to?(:experimental_glimmer_header_groups)
-        SiteSetting.experimental_glimmer_header_groups =
-          nil
+        SiteSetting.experimental_glimmer_header_groups = nil
       else
         SiteSetting.glimmer_header_mode = "disabled"
       end
@@ -59,19 +57,19 @@ RSpec.describe "Viewing Custom Header Links", system: true do
       expect(custom_header_link).to have_custom_header_link(
         "External link",
         href: "https://meta.discourse.org",
-        title: "this link will open in a new tab"
+        title: "This link will open in a new tab",
       )
 
       expect(custom_header_link).to have_custom_header_link(
         "Most Liked",
         href: "/latest/?order=op_likes",
-        title: "Posts with the most amount of likes"
+        title: "Posts with the most amount of likes",
       )
 
       expect(custom_header_link).to have_custom_header_link(
         "Privacy",
         href: "/privacy",
-        title: "Our Privacy Policy"
+        title: "Our Privacy Policy",
       )
     end
   end
