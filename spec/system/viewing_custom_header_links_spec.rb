@@ -6,6 +6,40 @@ RSpec.describe "Viewing Custom Header Links", system: true do
   fab!(:theme) { upload_theme_component }
   let!(:custom_header_link) { PageObjects::Components::CustomHeaderLink.new }
 
+  before do
+    theme.update_setting(
+      :custom_header_links,
+      [
+        {
+          text: "External link",
+          title: "This link will open in a new tab",
+          url: "https://meta.discourse.org",
+          view: "vdo",
+          target: "blank",
+          hide_on_scroll: "remove",
+        },
+        {
+          text: "Most Liked",
+          title: "Posts with the most amount of likes",
+          url: "/latest/?order=op_likes",
+          view: "vdo",
+          target: "self",
+          hide_on_scroll: "keep",
+        },
+        {
+          text: "Privacy",
+          title: "Our Privacy Policy",
+          url: "/privacy",
+          view: "vdm",
+          target: "self",
+          hide_on_scroll: "keep",
+        },
+      ],
+    )
+
+    theme.save!
+  end
+
   context "when glimmer headers are enabled" do
     before do
       if SiteSetting.respond_to?(:experimental_glimmer_header_groups)
