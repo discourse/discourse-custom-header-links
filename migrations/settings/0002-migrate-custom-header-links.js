@@ -16,12 +16,15 @@ export default function migrate(settings) {
         .split(",")
         .map((s) => s.trim());
 
-      if (text && title && url) {
+      if (text && url) {
         const newLink = {
           text,
-          title,
           url,
         };
+
+        if (title) {
+          newLink.title = title;
+        }
 
         if (["vdm", "vdo", "vmo"].includes(view)) {
           newLink.view = view;
