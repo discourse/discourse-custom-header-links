@@ -156,6 +156,35 @@ module(
       );
     });
 
+    test("migrate when title is not provided", function (assert) {
+      const settings = new Map(
+        Object.entries({
+          custom_header_links: "External link, , https://meta.discourse.org",
+        })
+      );
+
+      const result = migrate(settings);
+
+      const expectedResult = new Map(
+        Object.entries({
+          custom_header_links: [
+            {
+              text: "External link",
+              url: "https://meta.discourse.org",
+              view: "vdm",
+              target: "blank",
+              hide_on_scroll: "keep",
+            },
+          ],
+        })
+      );
+
+      assert.deepEqual(
+        Object.fromEntries(result.entries()),
+        Object.fromEntries(expectedResult.entries())
+      );
+    });
+
     test("migrate", function (assert) {
       const settings = new Map(
         Object.entries({
