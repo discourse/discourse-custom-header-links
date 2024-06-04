@@ -2,7 +2,7 @@ import { module, test } from "qunit";
 import migrate from "../../../../migrations/settings/0002-migrate-custom-header-links";
 
 module(
-  "Unit | Migrations | Settings | 0002-migrate-custom-header-links",
+  "Custom Header Links | Migrations | Settings | 0002-migrate-custom-header-links",
   function () {
     test("migrate when value of setting is already an array", function (assert) {
       const settings = new Map(
