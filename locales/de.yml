@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 de:
+  theme_metadata:
+    settings:
+      links_position: "Wenn Links auf der linken Seite angezeigt werden, werden sie beim Scrollen innerhalb der Themen automatisch ausgeblendet, um Platz für den Titel zu schaffen"
+      custom_header_links:
+        description: Benutzerdefinierte Links, die in der Kopfzeile angezeigt werden
+        schema:
+          properties:
+            text:
+              label: Text
+              description: Der Text für den Link
+            title:
+              label: Titel
+              description: Das Titel-Attribut für den Link
+            url:
+              label: URL
+              description: Die URL für den Link
+            view:
+              label: Ansicht
+              description: |
+                vdm = Desktop und Mobilgerät
+                vdo = nur Desktop
+                vmo = nur Mobilgerät
+            target:
+              label: Target
+              description: |
+                blank = öffnet in einem neuen Tab
+                self = öffnet im selben Tab
+            hide_on_scroll:
+              label: Beim Scrollen ausblenden
+              description: |
+                remove = verbirgt den Link, wenn der Titel auf Themenseiten erweitert wird.
+                keep = lässt den Link sichtbar, auch wenn der Titel auf Themenseiten sichtbar ist.
+            locale:
+              label: Sprache
+              description: Die Sprache, für die der Link angezeigt werden soll. Der Link wird in allen Sprachversionen angezeigt, wenn dies leer gelassen wird.
