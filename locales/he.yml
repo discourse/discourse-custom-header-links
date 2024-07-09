@@ -5,3 +5,32 @@
 # https://translate.discourse.org/
 
 he:
+  theme_metadata:
+    settings:
+      custom_header_links:
+        description: קישורים מותאמים אישית שיוצגו בכותרת
+        schema:
+          properties:
+            text:
+              label: טקסט
+              description: הטקסט לקישור
+            title:
+              label: כותרת
+              description: מאפיין הכותרת לקישור
+            url:
+              label: כתובת
+              description: כתובת הקישור
+            view:
+              description: |
+                vdm = מחשב ונייד
+                vdo = מחשב בלבד
+                vmo = נייד בלבד
+            target:
+              label: יעד
+              description: |
+                blank = נפתח בלשונית חדשה
+                self = נפתח באותה הלשונית
+            hide_on_scroll:
+              label: הסתרה בגלילה
+            locale:
+              label: שפה
