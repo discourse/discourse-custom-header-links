@@ -35,8 +35,8 @@ de:
             hide_on_scroll:
               label: Beim Scrollen ausblenden
               description: |
-                remove = verbirgt den Link, wenn der Titel auf Themenseiten erweitert wird.
-                keep = lässt den Link sichtbar, auch wenn der Titel auf Themenseiten sichtbar ist.
+                remove = verbirgt den Link, wenn der Titel auf Themenseiten erweitert wird
+                keep = lässt den Link sichtbar, auch wenn der Titel auf Themenseiten sichtbar ist
             locale:
               label: Sprache
               description: Die Sprache, für die der Link angezeigt werden soll. Der Link wird in allen Sprachversionen angezeigt, wenn dies leer gelassen wird.

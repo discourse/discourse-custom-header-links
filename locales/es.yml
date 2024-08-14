@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 es:
+  theme_metadata:
+    settings:
+      links_position: "Ten en cuenta que cuando los enlaces se muestran a la izquierda, se ocultan automáticamente al desplazarse dentro de los temas para dejar espacio al título"
+      custom_header_links:
+        description: Enlaces personalizados para mostrar en el encabezado
+        schema:
+          properties:
+            text:
+              label: Texto
+              description: El texto para el enlace
+            title:
+              label: Título
+              description: El atributo de título para el enlace
+            url:
+              label: URL
+              description: La URL del enlace
+            view:
+              label: Vista
+              description: |
+                vdm = escritorio y dispositivos móviles
+                vdo = solo escritorio
+                vmo = solo dispositivos móviles
+            target:
+              label: Destino
+              description: |
+                blank = se abre en una pestaña nueva
+                self = se abre en la misma pestaña
+            hide_on_scroll:
+              label: Ocultar al desplazarse
+              description: |
+                remove = oculta el enlace cuando el título se expande en las páginas de temas
+                keep = mantiene el enlace visible incluso cuando el título está visible en las páginas de temas
+            locale:
+              label: Configuración regional
+              description: La configuración regional en la que se debe mostrar el enlace. El enlace se mostrará en todas las configuraciones regionales si se deja en blanco.

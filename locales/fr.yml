@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 fr:
+  theme_metadata:
+    settings:
+      links_position: "Notez que lorsque les liens sont affichés sur la gauche, ils sont automatiquement masqués lorsque vous faites défiler les sujets pour faire de la place pour le titre"
+      custom_header_links:
+        description: Liens personnalisés à afficher dans l'en-tête
+        schema:
+          properties:
+            text:
+              label: Texte
+              description: Le texte du lien
+            title:
+              label: Titre
+              description: L'attribut titre du lien
+            url:
+              label: URL
+              description: L'URL du lien
+            view:
+              label: Voir
+              description: |
+                vdm = ordinateur de bureau et mobile
+                vdo = ordinateur de bureau uniquement
+                vmo = mobile uniquement
+            target:
+              label: Cible
+              description: |
+                vide = s'ouvre dans un nouvel onglet
+                self = s'ouvre dans le même onglet
+            hide_on_scroll:
+              label: Masquer lors du défilement
+              description: |
+                remove = masque le lien lorsque le titre est développé sur les pages de sujets
+                keep = garde le lien visible même lorsque le titre est visible sur les pages de sujets
+            locale:
+              label: Langue
+              description: Les paramètres régionaux dans lesquels le lien doit être affiché. Le lien sera affiché dans tous les pays s'il est laissé vide.

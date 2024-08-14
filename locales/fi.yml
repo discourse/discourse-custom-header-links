@@ -5,3 +5,35 @@
 # https://translate.discourse.org/
 
 fi:
+  theme_metadata:
+    settings:
+      links_position: "Huomaa, että kun linkit näytetään vasemmalla, ne piilotetaan automaattisesti vieritettäessä ketjuissa; tämä tekee tilaa otsikolle"
+      custom_header_links:
+        description: Yläpalkissa näytettävät mukautetut linkit
+        schema:
+          properties:
+            text:
+              label: Teksti
+              description: Linkin teksti
+            title:
+              label: Otsikko
+              description: Linkin otsikkomäärite
+            url:
+              label: URL
+              description: Linkin URL
+            view:
+              label: Näkymä
+              description: "vdm = työpöytälaite ja mobiili\nvdo = vain työpöytälaite \nvmo = vain mobiili\n"
+            target:
+              label: Kohde
+              description: |
+                blank = avautuu uuteen välilehteen
+                self = avautuu samaan välilehteen
+            hide_on_scroll:
+              label: Piilota vieritettäessä
+              description: |
+                remove = piilottaa linkin, kun otsikkoa laajennetaan ketjusivuilla
+                keep = pitää linkin näkyvissä, vaikka otsikko on näkyvissä ketjusivuilla
+            locale:
+              label: Kielialue
+              description: Kielialue, jolla linkki näytetään. Linkki näkyy kaikilla kielialueilla, jos tämä jätetään tyhjäksi.
