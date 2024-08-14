@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 zh_CN:
+  theme_metadata:
+    settings:
+      links_position: "请注意，当链接显示在左侧时，在话题内滚动时它们会自动隐藏，以便为标题留出空间"
+      custom_header_links:
+        description: 要显示在标题中的自定义链接
+        schema:
+          properties:
+            text:
+              label: 文本
+              description: 链接的文本
+            title:
+              label: 标题
+              description: 链接的标题属性
+            url:
+              label: URL
+              description: 链接的 URL
+            view:
+              label: 查看
+              description: |
+                vdm = 桌面和移动
+                vdo = 仅桌面
+                vmo = 仅移动
+            target:
+              label: 目标
+              description: |
+                blank = 在新标签页中打开
+                self = 在同一标签页中打开
+            hide_on_scroll:
+              label: 滚动时隐藏
+              description: |
+                remove = 当标题在话题页面上展开时隐藏链接
+                keep = 即使标题在话题页面上可见，也保持链接可见
+            locale:
+              label: 区域设置
+              description: 链接应当显示的区域设置。如果留空，则链接将在所有区域设置显示。

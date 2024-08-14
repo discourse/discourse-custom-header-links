@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 ja:
+  theme_metadata:
+    settings:
+      links_position: "左側にリンクが表示されている場合は、トピック内をスクロールする際にタイトルのスペースを確保するためにリンクが自動的に非表示になることに注意してください。"
+      custom_header_links:
+        description: ヘッダーに表示されるカスタムリンク
+        schema:
+          properties:
+            text:
+              label: テキスト
+              description: リンクのテキスト
+            title:
+              label: タイトル
+              description: リンクのタイトル属性
+            url:
+              label: URL
+              description: リンクの URL
+            view:
+              label: 表示
+              description: |
+                vdm = デスクトップとモバイル
+                vdo = デスクトップのみ
+                vmo = モバイルのみ
+            target:
+              label: ターゲット
+              description: |
+                blank = 新しいタブで開く
+                self = 同じタブで開く
+            hide_on_scroll:
+              label: スクロール時に非表示
+              description: |
+                remove = トピックページでタイトルが展開されている場合にリンクを非表示にします
+                keep = トピックページでタイトルが表示されているときでもリンクを表示したままにします
+            locale:
+              label: ロケール
+              description: リンクが表示されるロケール。空白のままにすると、リンクはすべてのロケールで表示されます。

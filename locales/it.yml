@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 it:
+  theme_metadata:
+    settings:
+      links_position: "Tieni presente che quando i link vengono visualizzati a sinistra, sono automaticamente nascosti durante lo scorrimento all'interno degli argomenti per fare spazio al titolo"
+      custom_header_links:
+        description: Link personalizzati da visualizzare nell'intestazione
+        schema:
+          properties:
+            text:
+              label: Testo
+              description: Il testo del link
+            title:
+              label: Titolo
+              description: L'attributo titolo per il link
+            url:
+              label: URL
+              description: L'URL del link
+            view:
+              label: Visualizzazione
+              description: |
+                vdm = desktop e mobile
+                vdo = solo desktop
+                vmo = solo mobile
+            target:
+              label: Destinazione
+              description: |
+                blank = si apre in una nuova scheda
+                self = si apre nella stessa scheda
+            hide_on_scroll:
+              label: Nascondi durante lo scorrimento
+              description: |
+                remove = nasconde il link quando il titolo è espanso nelle pagine degli argomenti
+                keep = mantiene il link visibile anche quando il titolo è visibile nelle pagine degli argomenti
+            locale:
+              label: Impostazione locale
+              description: Le impostazioni locali in cui il link deve essere visualizzato. Il link verrà visualizzato in tutte le impostazioni locali se lasciato vuoto.

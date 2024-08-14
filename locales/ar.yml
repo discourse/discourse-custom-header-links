@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 ar:
+  theme_metadata:
+    settings:
+      links_position: "لاحظ أنه عند عرض الروابط على اليمين، يتم إخفاؤها تلقائيًا أثناء التمرير داخل الموضوعات لإفساح المجال للعنوان"
+      custom_header_links:
+        description: روابط مخصَّصة لعرضها في الرأس
+        schema:
+          properties:
+            text:
+              label: النص
+              description: نص الرابط
+            title:
+              label: العنوان
+              description: سمة العنوان للرابط
+            url:
+              label: عنوان URL
+              description: عنوان URL للرابط
+            view:
+              label: العرض
+              description: |
+                vdm = سطح المكتب والجوَّال
+                vdo = سطح المكتب فقط
+                vmo = الجوَّال فقط
+            target:
+              label: الهدف
+              description: |
+                blank = يفتح في علامة تبويب جديدة
+                self = يفتح في علامة التبويب نفسها
+            hide_on_scroll:
+              label: الإخفاء عند التمرير
+              description: |
+                remove = إخفاء الرابط عند توسيع العنوان على صفحات الموضوع
+                keep = إبقاء الرابط مرئيًا حتى عندما يكون العنوان مرئيًا على صفحات الموضوع
+            locale:
+              label: اللغة
+              description: اللغة التي ينبغي عرض الرابط بها. سيظهر الرابط في جميع إصدارات اللغات إذا تم ترك هذا الإعداد فارغًا.
