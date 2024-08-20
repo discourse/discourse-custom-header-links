@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 pt_BR:
+  theme_metadata:
+    settings:
+      links_position: "Observação: quando os links forem exibidos à esquerda, serão ocultados automaticamente quando o(a) usuário(a) rolar a tela no tópico, de modo a liberar espaço para o título"
+      custom_header_links:
+        description: Links personalizados a serem exibidos no cabeçalho
+        schema:
+          properties:
+            text:
+              label: Texto
+              description: Texto do link
+            title:
+              label: Título
+              description: O atributo do título para o link
+            url:
+              label: URL
+              description: A URL do link
+            view:
+              label: Visualização
+              description: |
+                vdm = desktop e dispositivo móvel
+                vdo = apenas desktop
+                vmo = apenas dispositivo móvel
+            target:
+              label: Destino
+              description: |
+                blank = abre numa nova aba
+                self = abre na mesma aba
+            hide_on_scroll:
+              label: Ocultar durante rolagem
+              description: |
+                remove = oculta o link quando o título for expandido nas páginas do tópico
+                keep = mantém o link visível mesmo quando o título estiver visível nas páginas do tópico
+            locale:
+              label: Local
+              description: O local onde o link deve ser exibido. Será exibido em todos os locais se esta opção estiver em branco.

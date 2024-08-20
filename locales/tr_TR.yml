@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 tr_TR:
+  theme_metadata:
+    settings:
+      links_position: "Bağlantılar solda görüntülendiğinde başlığa yer açmak için konular içinde kaydırılırken otomatik olarak gizlendiklerini unutmayın."
+      custom_header_links:
+        description: Başlıkta gösterilecek özel bağlantılar
+        schema:
+          properties:
+            text:
+              label: Metin
+              description: Bağlantı metni
+            title:
+              label: Başlık
+              description: Bağlantı için başlık niteliği
+            url:
+              label: URL
+              description: Bağlantının URL'si
+            view:
+              label: Görüntüle
+              description: |
+                vdm = masaüstü ve mobil
+                vdo = yalnızca masaüstü
+                vmo = yalnızca mobil
+            target:
+              label: Hedef
+              description: |
+                boş = yeni bir sekmede açılır
+                self = aynı sekmede açılır
+            hide_on_scroll:
+              label: Kaydırırken gizle
+              description: |
+                kaldır = başlık konu sayfalarında genişletildiğinde bağlantıyı gizler
+                tut = başlık konu sayfalarında görünür olsa bile bağlantıyı görünür tutar
+            locale:
+              label: Yerel Ayarlar
+              description: Bağlantının gösterileceği yerel ayarlar. Boş bırakılırsa bağlantı tüm yerel ayarlarda gösterilir.

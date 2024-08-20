@@ -5,3 +5,38 @@
 # https://translate.discourse.org/
 
 nl:
+  theme_metadata:
+    settings:
+      links_position: "Houd er rekening mee dat als links worden weergegeven aan de linkerkant, deze automatisch worden verborgen tijdens het scrollen binnen topics om ruimte te maken voor de titel."
+      custom_header_links:
+        description: Aangepaste links om weer te geven in de kop
+        schema:
+          properties:
+            text:
+              label: Tekst
+              description: De tekst voor de link
+            title:
+              label: Titel
+              description: Het 'title'-attribuut voor de link
+            url:
+              label: URL
+              description: De URL voor de link
+            view:
+              label: Weergave
+              description: |
+                vdm = desktop en mobiel
+                vdo = alleen desktop
+                vmo = alleen mobiel
+            target:
+              label: Doel
+              description: |
+                blank = opent in een nieuw tabblad
+                self = opent in hetzelfde tabblad
+            hide_on_scroll:
+              label: Verbergen bij scrollen
+              description: |
+                remove = verbergt de link wanneer de titel wordt uitgebreid op topicpagina's
+                keep = houdt de link zichtbaar, ook als de titel zichtbaar is op topicpagina's
+            locale:
+              label: Taal
+              description: De taal waarin de link moet worden weergegeven. De link wordt weergegeven in alle talen als dit leeg wordt gelaten.
