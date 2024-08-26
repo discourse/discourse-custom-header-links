@@ -43,6 +43,21 @@ module(
       );
     });
 
+    test("migrate when old setting value is an empty string", function (assert) {
+      const settings = new Map(Object.entries({ custom_header_links: "" }));
+
+      const result = migrate(settings);
+
+      const expectedResult = new Map(
+        Object.entries({ custom_header_links: [] })
+      );
+
+      assert.deepEqual(
+        Object.fromEntries(result.entries()),
+        Object.fromEntries(expectedResult.entries())
+      );
+    });
+
     test("migrate when old setting value is invalid", function (assert) {
       const settings = new Map(
         Object.entries({
