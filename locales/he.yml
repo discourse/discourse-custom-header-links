@@ -7,6 +7,7 @@
 he:
   theme_metadata:
     settings:
+      links_position: "נא לשים לב שכשקישורים מופיעים מימין, הם מוסתרים אוומטית בעת גלילה בתוך נושאים כדי לפנות מקום לכותרת"
       custom_header_links:
         description: קישורים מותאמים אישית שיוצגו בכותרת
         schema:
@@ -21,6 +22,7 @@ he:
               label: כתובת
               description: כתובת הקישור
             view:
+              label: הצגה
               description: |
                 vdm = מחשב ונייד
                 vdo = מחשב בלבד
@@ -32,5 +34,9 @@ he:
                 self = נפתח באותה הלשונית
             hide_on_scroll:
               label: הסתרה בגלילה
+              description: |
+                remove = הסתרת הקישור כשהכותרת מורחבת על עמודי נושאים
+                keep = השארת הקישור גלוי אפילו כאשר הכותרת גלויה בעמודי נושאים
             locale:
               label: שפה
+              description: השפה להצגת הקישור. הקישור יוצג בכל השפות אם הערך הזה יישאר ריק.
