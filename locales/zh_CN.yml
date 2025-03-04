@@ -1,10 +1,4 @@
-# WARNING: Never edit this file.
-# It will be overwritten when translations are pulled from Crowdin.
-#
-# To work with us on translations, join this project:
-# https://translate.discourse.org/
-
-zh_CN:
+zh-CN:
   theme_metadata:
     settings:
       links_position: "请注意，当链接显示在左侧时，在话题内滚动时它们会自动隐藏，以便为标题留出空间"
