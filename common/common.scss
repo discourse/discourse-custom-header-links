@@ -5,6 +5,7 @@
 @if $links_position == "right" {
   .before-header-panel-outlet {
     margin-left: auto;
+
     + .panel {
       margin-left: 0;
     }
@@ -15,8 +16,10 @@
   display: inline-flex;
   align-items: center;
   margin-left: auto;
+
   @if $links_position == "left" {
     margin-left: 1em;
+
     &--hide-links {
       display: none;
     }
@@ -24,6 +27,7 @@
 
   .headerLink {
     list-style: none;
+
     a {
       padding: 0.35em 0.6em;
       color: var(--header_primary);
@@ -44,10 +48,10 @@
 }
 
 // for compatibility with the discourse-header-search component
-
 .floating-search-input-wrapper {
   flex: 1 1 auto;
   margin: 0 1em;
+
   @if $links_position == "left" {
     order: 2;
   }
