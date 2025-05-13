@@ -1,6 +1,9 @@
 import Component from "@glimmer/component";
 import { dasherize } from "@ember/string";
 
+function normalizeLocale(locale) {
+  return locale?.trim().toLowerCase().replace(/[-_]/g, "_");
+}
 export default class CustomHeaderLinks extends Component {
   get shouldShow() {
     return settings.custom_header_links?.length > 0;
@@ -16,7 +19,9 @@ export default class CustomHeaderLinks extends Component {
       const locale = link.locale;
       const device = link.view;
 
-      if (!linkText || (locale && document.documentElement.lang !== locale)) {
+      const currentLocale = normalizeLocale(document.documentElement.lang);
+
+      if (!linkText || (locale && normalizeLocale(locale) !== currentLocale)) {
         return result;
       }
 
