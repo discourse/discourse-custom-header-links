@@ -1,9 +1,11 @@
 import Component from "@glimmer/component";
 import { dasherize } from "@ember/string";
+import concatClass from "discourse/helpers/concat-class";
 
 function normalizeLocale(locale) {
   return locale?.trim().toLowerCase().replace(/[-_]/g, "_");
 }
+
 export default class CustomHeaderLinks extends Component {
   get shouldShow() {
     return settings.custom_header_links?.length > 0;
@@ -45,4 +47,33 @@ export default class CustomHeaderLinks extends Component {
       return result;
     }, []);
   }
+
+  <template>
+    {{#if this.shouldShow}}
+      <ul
+        class="custom-header-links
+          {{if @outletArgs.topicInfoVisible 'custom-header-links--hide-links'}}"
+      >
+        {{#each this.links as |link|}}
+          <li
+            class={{concatClass
+              "headerLink"
+              link.device
+              link.locale
+              link.linkClass
+              link.hideOnScroll
+            }}
+          >
+            <a
+              title={{link.anchorAttributes.title}}
+              href={{link.anchorAttributes.href}}
+              target={{link.anchorAttributes.target}}
+            >
+              {{link.linkText}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  </template>
 }
